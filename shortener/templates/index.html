@@ -2,10 +2,5 @@
 
 {% block body %}
 <h1>URL Shortener</h1>
-<form method="POST" action="/add/">
-    {% csrf_token %}
-    <label for="dest_url">Destination URL:</label>
-    <input type="text" name="dest_url" id="dest_url" /><br />
-    <input type="submit" value="Submit" />
-</form>
+{% include 'form_addnew.html' %}
 {% endblock %}

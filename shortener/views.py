@@ -28,7 +28,7 @@ def index(request):
 
 def add(request):
     if request.method != 'POST':
-        return HttpResponseBadRequest('Invalid request.  Missing POST data.')
+        return HttpResponseRedirect('/')
     else:
         dest = request.POST['dest_url']
         l = Link.objects.filter(destination=dest)
