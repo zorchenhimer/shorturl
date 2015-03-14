@@ -31,6 +31,11 @@ def add(request):
         return HttpResponseRedirect('/')
     else:
         dest = request.POST['dest_url']
+        if len(dest) == 0:
+            return HttpResponseRedirect('/')
+        elif dest.find('://') < 0:
+            dest = 'http://{d}'.format(d=dest)
+
         l = Link.objects.filter(destination=dest)
         if len(l) > 0:
             l = l[0]
