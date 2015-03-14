@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'MadokaRunes';
+    src: url('/static/runes.ttf');
+}
+
+@font-face {
+    font-family: 'MadokaMusical';
+    src: url('/static/runesmusical.ttf');
+}
+
+#content {
+    padding: 10px;
+    margin: auto;
+    width: 600px;
+    text-align:center;
+    background-image: url('/static/bg-pixel.png');
+    background-repeat: repeat;
+}
+
+#staticbg {
+    position: absolute;
+    bottom: 0px;
+}
+
+.musicrunes {
+    font-family: 'MadokaMusical';
+    font-size: 3em;
+}
+
+.runes {
+    font-family: 'MadokaRunes';
+    font-size: 1.2em;
+}
+
+body {
+    background-image: url('/static/bg-tile.png');
+    background-repeat: repeat-x;
+    background-color: #638fa4;
+}

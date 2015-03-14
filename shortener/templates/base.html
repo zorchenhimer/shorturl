@@ -3,10 +3,14 @@
     <title>URL Shortener</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script type="text/javascript" src="{% static 'scripts.js' %}"></script>
 </head>
 <body>
+<div id="content">
 {% block body %}
     <!-- Content goes here~ -->
 {% endblock %}
+</div>
+<img src="{% static '1369790064009.png' %}" id="staticbg" onclick="toggle_runes();" />
 </body>
 </html>
