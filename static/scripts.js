@@ -23,10 +23,15 @@ function disable_runes() {
 }
 
 function toggle_runes() {
+    /* i hate javascript. */
     if(runesenabled == false) {
+        enable_runes();
+        enable_runes();
         enable_runes();
         runesenabled = true;
     } else {
+        disable_runes();
+        disable_runes();
         disable_runes();
         runesenabled = false;
     }
