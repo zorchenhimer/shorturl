@@ -31,16 +31,20 @@ def add(request):
         return HttpResponseBadRequest('Invalid request.  Missing POST data.')
     else:
         dest = request.POST['dest_url']
-        short = short_hash(dest)
-        l = Link.objects.create(
-                destination = dest,
-                short_name = short,
-                times_visited = 0
-            )
+        l = Link.objects.filter(destination=dest)
+        if len(l) > 0:
+            l = l[0]
+        else:
+            short = short_hash(dest)
+            l = Link.objects.create(
+                    destination = dest,
+                    short_name = short,
+                    times_visited = 0
+                )
         return render(request, 'added.html', {
-                'shorturl': short,
-                'destination': dest,
-                'link': reverse('link', kwargs={'lid':short.decode('utf-8')}),
+                'shorturl': l.short_name,
+                'destination': l.destination,
+                'link': 'FIXME',
                 })
 
 def short_hash(destination_url):
@@ -53,9 +57,9 @@ def short_hash(destination_url):
 
         destination_utf8 = destination_url.encode('utf-8')
         hash_bin = hashlib.md5(destination_utf8).digest()
-        short = base64.b64encode(hash_bin)[:10]
+        short = base64.b64encode(hash_bin)[:10].decode('utf-8')
 
-        if Link.objects.filter(short_name=short):
+        if short.find('/') > -1 or short.find('+') > -1 or Link.objects.filter(short_name=short):
             # Found collision. Try again.
             attempt += 1
             if attempt > 50:
