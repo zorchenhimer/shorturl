@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>URL Added!</h1>
+<div>
+    <input type="text" value="{{ shorturl }}" /><br />
+    <a href="{{ link }}">{{ link }}</a> redirects to <strong>{{ destination }}</strong>.
+</div>
+{% endblock %}
